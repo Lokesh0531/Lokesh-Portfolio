@@ -4,11 +4,11 @@
 <head>
     <!-- metas -->
     <meta charset="utf-8">
-    <meta name="author" content="themepaa">
+    <meta name="author" content="Lokesh Bhatu Chaudhari">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Weasley - Portfolio Template">
-    <meta name="description" content="Weasley - Portfolio Template">
+    <meta name="keywords" content="Lokesh Bhatu Chaudhari Portfolio">
+    <meta name="description" content="Lokesh Bhatu Chaudhari Portfolio">
     <link rel="icon" type="image/x-icon" href="assets/img/fevicon.png">
     <!-- title -->
     <title>Lokesh Portfolio</title>
@@ -20,6 +20,37 @@
 <!-- Body Start -->
 
 <body class="dark-bg">
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('suce_message').style.display = 'block';
+                    document.getElementById('err_message').style.display = 'none';
+                    form.reset(); // Optionally reset the form
+                } else {
+                    document.getElementById('suce_message').style.display = 'none';
+                    document.getElementById('err_message').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('suce_message').style.display = 'none';
+                document.getElementById('err_message').style.display = 'block';
+            });
+        });
+    </script>
+    
     <!-- page loading -->
     <div id="loading">
         <div class="load-circle"><span class="one"></span></div>
@@ -29,11 +60,6 @@
     <header class="main-header">
         <nav class="navbar header-nav header-white header-transparent navbar-expand-lg one-page-nav">
             <div class="container">
-                <!-- Brand -->
-                <!-- <a class="navbar-brand" href="http://pxdraft.com/themeforest/weasley/">
-                    <img src="assets/img/logo-light.svg" title="" alt="">
-                </a> -->
-                <!-- / -->
                 <!-- Mobile Toggle -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-toggle" aria-controls="navbar-collapse-toggle" aria-expanded="false" aria-label="Toggle navigation">
                     <span></span>
@@ -46,8 +72,8 @@
                     <ul class="navbar-nav ml-auto">
                         <li><a class="nav-link" data-scroll-nav="0" href="#home"><span>Home</span></a></li>
                         <li><a class="nav-link" data-scroll-nav="1" href="#about"><span>About Us</span></a></li>
-                        <li><a class="nav-link" data-scroll-nav="2" href="#services"><span>Services</span></a></li>
-                        <li><a class="nav-link" data-scroll-nav="3" href="#work"><span>Portfolio</span></a></li>
+                        <li><a class="nav-link" data-scroll-nav="2" href="#services"><span>Education</span></a></li>
+                        <li><a class="nav-link" data-scroll-nav="3" href="#work"><span>Projects</span></a></li>
                         <li><a class="nav-link" data-scroll-nav="4" href="#contactus"><span>Contact</span></a></li>
                     </ul>
                 </div>
@@ -156,7 +182,7 @@
                     <div class="col-lg-6">
                         <!-- skill -->
                         <div class="skill-lt">
-                            <h6 class="dark-color">Web Devlopment</h6>
+                            <h6 class="dark-color">Web Devlopment (HTML, CSS, JavaScript, Boostrap)</h6>
                             <div class="skill-bar">
                                 <div class="skill-bar-in theme-bg-g" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
                                     <span>85%</span>
@@ -166,7 +192,7 @@
                         <!-- end skill -->
                         <!-- skill -->
                         <div class="skill-lt">
-                            <h6 class="dark-color">Node.js</h6>
+                            <h6 class="dark-color">Backend (Node.Js, MySQL)</h6>
                             <div class="skill-bar">
                                 <div class="skill-bar-in theme-bg-g" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100">
                                     <span>75%</span>
@@ -176,7 +202,7 @@
                         <!-- end skill -->
                         <!-- skill -->
                         <div class="skill-lt">
-                            <h6 class="dark-color">My SQL</h6>
+                            <h6 class="dark-color">Git/Github</h6>
                             <div class="skill-bar">
                                 <div class="skill-bar-in theme-bg-g" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100">
                                     <span>86%</span>
@@ -469,38 +495,40 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-xl-8">
                         <div class="contact-form">
-                            <form id="contact-form" method="POST">
+                            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
                                 <h5>SAY SOMETHING</h5>
                                 <div class="row gy-4">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input name="Name" id="name" placeholder="Name *" class="form-control" type="text">
+                                            <input type="hidden" name="access_key" value="5d56723c-f82a-4fbf-887d-b715b53a4ac3">
+                                            <input name="Name" id="name" placeholder="Name *" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input name="Email" id="email" placeholder="Email *" class="form-control" type="email">
+                                            <input name="Email" id="email" placeholder="Email *" class="form-control" type="email" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <input name="Subject" id="subject" placeholder="Subject *" class="form-control" type="text">
+                                            <input name="Subject" id="subject" placeholder="Subject *" class="form-control" type="text" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea name="message" id="message" placeholder="Your message *" rows="3" class="form-control"></textarea>
+                                            <textarea name="message" id="message" placeholder="Your message *" rows="3" class="form-control" required></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="send">
-                                            <button class="px-btn px-btn-primary" type="button" value="Send" onclick="send_mail()"> Send Message <i class="bi bi-arrow-up-right"></i></button>
+                                            <button class="px-btn px-btn-primary" type="submit">Send Message <i class="bi bi-arrow-up-right"></i></button>
                                             <span id="suce_message" class="text-success" style="display: none">Message Sent Successfully</span>
                                             <span id="err_message" class="text-danger" style="display: none">Message Sending Failed</span>
                                         </div>
                                     </div>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                     <div class="col-lg-5 col-xl-4">
@@ -512,15 +540,16 @@
                         </div>
                         <div class="contact-name-01">
                             <div class="icon">
-                                <i class="fas fa-phone-alt"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
                             <p>&nbsp;&nbsp;chaudharilokesh0531@gmail.com<br>&nbsp;&nbsp;Mon to Fri (10 am – 8 pm)</p>
                         </div>
                         <div class="contact-name-01">
                             <div class="icon">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-phone-alt "></i>
                             </div>
-                            <p>&nbsp;&nbsp;Phone: 91 8080631836</p>
+                            <p>&nbsp;&nbsp;Phone: +91 8080631836 <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +91 8080601719</p>
+                            
                         </div>
                     </div>
                     <div class="col-12">
